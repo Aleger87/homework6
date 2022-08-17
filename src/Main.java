@@ -2,6 +2,15 @@
 import java.util.Arrays;
 
 public class Main {
+    public static int[] generateRandomArray(int numberOfDays) {
+        java.util.Random random = new java.util.Random();
+        int[] arr = new int[numberOfDays];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100_000) + 100_000;
+        }
+        return arr;
+    }
+
     public static void main(String[] args) {
 
         System.out.println("Задание 1");
@@ -11,12 +20,12 @@ public class Main {
         Нужно написать программу, которая решит эту задачу, и вывести в консоль результат
         в формате: «Сумма трат за месяц составила … рублей».
         * */
-        int days = 30;
+        int days = 5;
         int sum = 0;
-        int[] arr = new randomArray().generateRandomArray(days);
+        int[] arr = generateRandomArray(days);
         System.out.println(Arrays.toString(arr));
-        for (int index : arr) {
-            sum += index;
+        for (int element : arr) {
+            sum += element;
         }
         System.out.println("Сумма трат за месяц составила " + sum + " рублей");
 
@@ -29,10 +38,24 @@ public class Main {
         Нужно написать программу, которая решит эту задачу, и вывести в консоль результат
         в формате: «Минимальная сумма трат за день составила … рублей. Максимальная сумма трат за день составила … рублей».
         * */
-        int max = arr.length-1;
-        int min = arr[0];
-        Arrays.sort(arr);
-        System.out.println("Минимальная сумма трат за день составила " + arr[0] + " рублей. \nМаксимальная сумма трат за день составила "+ arr[max] + " рублей");
+        //Arrays.sort(arr);
+        //int max = arr.length-1;
+        //int min = arr[0];
+
+        //System.out.println("Минимальная сумма трат за день составила " + arr[0] + " рублей. \nМаксимальная сумма трат за день составила "+ arr[max] + " рублей");
+
+        int max = 0;
+        int min =arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+            }
+            if (min > arr[i]) {
+                min = arr[i];
+            }
+
+        }
+        System.out.println("Минимальная сумма трат за день составила " + min + " рублей. \nМаксимальная сумма трат за день составила "+ max + " рублей");
 
 
         System.out.println("Задание 3");
